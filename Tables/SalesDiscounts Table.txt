@@ -1,0 +1,24 @@
+The sales discount table. 
+
+
+TABLE NAME			COLUMN NAME							DATA TYPE	TYPE NAME	PRECISION	LENGTH		SCALE		RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
+	
+ 
+EcomSalesDiscount 	SalesDiscountID 					-9 			nvarchar 	50 			100 		NULL		NULL	0 			NULL	NULL		-9 				NULL				100 				1 					NO 			39 	 
+EcomSalesDiscount 	SalesDiscountName 					-9 			nvarchar 	255 		510 		NULL		NULL	1 			NULL	NULL		-9 				NULL				510 				2 					YES 		39 	 
+EcomSalesDiscount 	SalesDiscountBuyLimit 				6 			float 		15 			8 			NULL		10 		1 			NULL	((0)) 		6 				NULL				NULL				3 					YES 		109 	 
+EcomSalesDiscount 	SalesDiscountDiscountType 			-9 			nvarchar 	255 		510 		NULL		NULL	1 			NULL	NULL		-9 				NULL				510 				4 					YES 		39 	 
+EcomSalesDiscount 	SalesDiscountCustomersAndGroups 	-10 		ntext 		1073741823 	2147483646 	NULL		NULL	1 			NULL	NULL		-10 			NULL				2147483646 			5 					YES		 	35 	 
+EcomSalesDiscount 	SalesDiscountParameters 			-10 		ntext 		1073741823 	2147483646 	NULL		NULL	1 			NULL	NULL		-10 			NULL				2147483646 			6 					YES 		35 	 
+EcomSalesDiscount 	SalesDiscountActive 				-7 			bit 		1 			1 			NULL		NULL	1 			NULL	NULL		-7 				NULL				NULL				7 					YES 		50 	 
+EcomSalesDiscount 	SalesDiscountProductsAndGroups 		-10 		ntext 		1073741823 	2147483646 	NULL		NULL	1 			NULL	NULL		-10 			NULL				2147483646 			8 					YES 		39 	 
+EcomSalesDiscount 	SalesDiscountDescription 			-10 		ntext 		1073741823 	2147483646 	NULL		NULL	1 			NULL	NULL		-10 			NULL				2147483646 			9 					YES 		39 	 
+EcomSalesDiscount 	SalesDiscountValueType 				-9 			nvarchar 	50 			100 		NULL		NULL	1 			NULL	NULL		-9 				NULL				100 				10 					YES 		39 	 
+EcomSalesDiscount 	SalesDiscountValueFixed 			6 			float 		15 			8 			NULL		10 		1 			NULL	NULL		6 				NULL				NULL				11 					YES 		109 	 
+EcomSalesDiscount 	SalesDiscountValuePercentage 		6 			float 		15 			8 			NULL		10 		1 			NULL	NULL		6 				NULL				NULL				12 					YES 		109 	 
+EcomSalesDiscount 	SalesDiscountValueProducts 			-10 		ntext 		1073741823 	2147483646 	NULL		NULL	1 			NULL	NULL		-10 			NULL				2147483646 			13 					YES 		39 	 
+EcomSalesDiscount 	SalesDiscountDateFrom 				-5 			bigint 		19 			8 			0 			10 		1 			NULL	NULL		-5 				NULL				NULL				14 					YES 		108 	 
+EcomSalesDiscount 	SalesDiscountDateTo 				-5 			bigint 		19 			8 			0 			10 		1 			NULL	NULL		-5 				NULL				NULL				15 					YES 		108 	 
+EcomSalesDiscount 	SalesDiscountConvertedToNewFormat 	-7 			bit 		1 			1 			NULL		NULL	1 			NULL	NULL		-7 				NULL				NULL				16 					YES 		50 	 
+EcomSalesDiscount 	SalesDiscountXMLParamsBackup 		-10 		ntext 		1073741823 	2147483646 	NULL		NULL	1 			NULL	NULL		-10 			NULL				2147483646 			17 					YES		 	39 	 
+ 

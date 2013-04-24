@@ -1,0 +1,89 @@
+The products table. 
+
+
+TABLE NAME		COLUMN NAME								DATA TYPE	TYPE NAME	PRECISION	LENGTH		SCALE	RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
+	
+ 
+EcomProducts 	ProductID 								-9 			nvarchar 	30 			60 			NULL	NULL	0 			NULL	NULL		-9 				NULL				60 					1 					NO		 	39 	 
+EcomProducts 	ProductLanguageID 						-9 			nvarchar 	50 			100 		NULL	NULL	0 			NULL	NULL		-9 				NULL				100 				2 					NO		 	39 	 
+EcomProducts 	ProductVariantID		 				-9 			nvarchar 	255 		510 		NULL	NULL	0 			NULL	NULL		-9 				NULL				510 				3 					NO 			39 	 
+EcomProducts 	ProductDefaultShopID 					-9 			nvarchar 	50 			100 		NULL	NULL	1 			NULL	NULL		-9 				NULL				100 				4 					YES 		39 	 
+EcomProducts 	ProductNumber 							-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				5 					YES 		39 	 
+EcomProducts 	ProductName 							-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				6 					YES 		39 	 
+EcomProducts 	ProductShortDescription 				-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646		 	7 					YES 		39 	 
+EcomProducts 	ProductLongDescription 					-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646		 	8 					YES 		39 	 
+EcomProducts 	ProductImageSmall 						-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				9 					YES 		39 	 
+EcomProducts 	ProductImageMedium			 			-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				10 					YES 		39 	 
+EcomProducts 	ProductImageLarge 						-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				11 					YES 		39 	 
+EcomProducts 	ProductLink1 							-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				12 					YES 		39 	 
+EcomProducts 	ProductLink2 							-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				13 					YES 		39 	 
+EcomProducts 	ProductPrice 							6 			float 		15 			8 			NULL	10 		1 			NULL	((0)) 		6 				NULL				NULL				14 					YES 		109 	 
+EcomProducts 	ProductStock 							6 			float 		15 			8 			NULL	10 		1 			NULL	((0)) 		6 				NULL				NULL				15 					YES 		109 	 
+EcomProducts 	ProductStockGroupID 					-9 			nvarchar 	50 			100 		NULL	NULL	1 			NULL	NULL		-9 				NULL				100 				16 					YES 		39 	 
+EcomProducts 	ProductWeight 							6 			float 		15 			8 			NULL	10 		1 			NULL	((0)) 		6 				NULL				NULL				17 					YES 		109 	 
+EcomProducts 	ProductVolume 							6 			float 		15 			8 			NULL	10 		1 			NULL	((0)) 		6 				NULL				NULL				18 					YES 		109 	 
+EcomProducts 	ProductVatGrpID 						-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				19 					YES 		39 	 
+EcomProducts 	ProductManufacturerID 					-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				20 					YES 		39 	 
+  Page 1 of 4
+
+  
+  
+TABLE NAME		COLUMN NAME								DATA TYPE	TYPE NAME	PRECISION	LENGTH		SCALE	RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
+	
+ 
+EcomProducts 	ProductActive 							-7 			bit 		1 			1 			NULL	NULL	1 			NULL	((1)) 		-7 				NULL				NULL				21 					YES 		50 	 
+EcomProducts 	ProductPeriodID 						-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				22 					YES 		39 	 
+EcomProducts 	ProductCreated 							11 			datetime 	23 			16 			3 		NULL	1 			NULL	NULL		9 				3 					NULL				23 					YES 		111 	 
+EcomProducts 	ProductUpdated 							11 			datetime 	23 			16 			3 		NULL	1 			NULL	NULL		9 				3 					NULL				24 					YES 		111 	 
+EcomProducts 	ProductCustomFieldsXml	 				-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646 			25 					YES 		39 	 
+EcomProducts 	ProductType 							4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				26 					YES 		38 	 
+EcomProducts 	ProductPriceType 						4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				27 					YES 		38 	 
+EcomProducts 	ProductPriceCounter 					4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				28 					YES 		38 	 
+EcomProducts 	ProductVariantCounter 					4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				29 					YES 		38 	 
+EcomProducts 	ProductVariantProdCounter 				4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				30 					YES 		38 	 
+EcomProducts 	ProductVariantGroupCounter 				4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				31 					YES 		38 	 
+EcomProducts 	ProductRelatedCounter 					4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				32 					YES 		38 	 
+EcomProducts 	ProductUnitCounter 						4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				33 					YES 		38 	 
+EcomProducts 	ProductDefaultUnitID 					-9 			nvarchar	75 			150 		NULL	NULL	1 			NULL	NULL		-9 				NULL				150 				34 					YES 		39 	 
+EcomProducts 	ProductDefaultVariantComboID		 	-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				35 					YES 		39 	 
+EcomProducts 	ProductPriceMatrixUnit 					4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				36 					YES 		38 	 
+EcomProducts 	ProductPriceMatrixVariant 				4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				37 					YES 		38 	 
+EcomProducts 	ProductPriceMatrixPeriod 				4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				38 					YES 		38 	 
+EcomProducts 	ProductPriceMatrixMultiplePrices 		4 			int 		10 			4 			0 		10 		1 			NULL	((0)) 		4 				NULL				NULL				39 					YES 		38 	 
+EcomProducts 	ProductPriceMatrixQuantitySpecification -9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				40 					YES 		39 	 
+  Page 2 of 4
+
+
+  
+TABLE NAME		COLUMN NAME								DATA TYPE	TYPE NAME	PRECISION	LENGTH		SCALE	RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
+	
+ 
+EcomProducts 	producent 								-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				41 					YES 		39 	 
+EcomProducts 	ProductMetaTitle 						-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				42 					YES 		39 	 
+EcomProducts 	ProductMetaKeywords 					-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646 			43 					YES 		39 	 
+EcomProducts 	ProductMetaDescription 					-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646 			44 					YES 		39 	 
+EcomProducts 	ProductMetaUrl 							-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646 			45 					YES 		39 	 
+EcomProducts 	nyhed 									-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				46 					YES 		39 	 
+EcomProducts 	ProductOptimizedFor 					-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				47 					YES 		39 	 
+EcomProducts 	ProductCategoryFieldValues 				-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646 			48 					YES 		39 	 
+EcomProducts 	ProductCommentcount 					4 			int 		10 			4 			0 		10 		1 			NULL	NULL		4 				NULL				NULL				49 					YES 		38 	 
+EcomProducts 	ProductRating 							6 			float 		15 			8 			NULL	10 		1 			NULL	NULL		6 				NULL				NULL				50 					YES 		109 	 
+EcomProducts 	markup 									6 			float 		15 			8 			NULL	10 		1 			NULL	((0.0)) 	6 				NULL				NULL				51 					YES 		109 	 
+EcomProducts 	stockstart 								-9 			nvarchar 	50 			100 		NULL	NULL	1 			NULL	NULL		-9 				NULL				100 				52 					YES 		39 	 
+EcomProducts 	dato 									11 			datetime 	23 			16 			3 		NULL	1 			NULL	NULL		9 				3 					NULL				53 					YES 		111 	 
+EcomProducts 	teaser 									-9 			nvarchar 	255 		510		 	NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				54 					YES 		39 	 
+EcomProducts 	ProductSearchAlder 						4 			int 		10 			4 			0 		10 		1 			NULL	NULL		4 				NULL				NULL				55 					YES 		38 	 
+EcomProducts 	ItemCode 								-9 			nvarchar 	255 		510 		NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				56 					YES 		39 	 
+EcomProducts 	TaxCode 								-9 			nvarchar 	512 		1024 		NULL	NULL	1 			NULL	NULL		-9 				NULL				1024 				57 					YES 		39 	 
+EcomProducts 	ProductSearchSkoStr 					4 			int 		10 			4 			0 		10 		1 			NULL	NULL		4 				NULL				NULL				58 					YES 		38 	 
+EcomProducts 	ProductSearchAlderMax 					4 			int 		10 			4 			0 		10 		1 			NULL	NULL		4 				NULL				NULL				59 					YES 		38 	 
+EcomProducts 	ProductSearchSkoStrMax 					4 			int 		10 			4 			0 		10 		1 			NULL	NULL		4 				NULL				NULL				60 					YES 		38 	 
+  Page 3 of 4
+
+  
+  
+ TABLE NAME		COLUMN NAME								DATA TYPE	TYPE NAME	PRECISION	LENGTH		SCALE	RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
+	
+ 
+EcomProducts 	MarkupData				 				-10 		ntext 		1073741823 	2147483646 	NULL	NULL	1 			NULL	NULL		-10 			NULL				2147483646 			61 					YES 		39 	 
+  Page 4 of 4
