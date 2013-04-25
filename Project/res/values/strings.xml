@@ -4,5 +4,8 @@
     <string name="app_name">TweenstyleApp</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="boys">Boys</string>
+    <string name="girls">Girls</string>
+    <string name="tweens">Tweens</string>
 
 </resources>
