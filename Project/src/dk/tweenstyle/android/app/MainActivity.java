@@ -1,14 +1,14 @@
 package dk.tweenstyle.android.app;
 
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 
 /**
   * Reverted manually by Aleksandar. 
   *
   */
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	//thomas
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

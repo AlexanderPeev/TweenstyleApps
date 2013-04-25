@@ -37,7 +37,7 @@
     
     <fragment
         android:id="@+id/menu_bar"
-        android:name="MiniBarFragment"
+        android:name="dk.tweenstyle.android.app.MiniBarFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
