@@ -1,9 +1,0 @@
-The group relations table. 
-
-TABLE NAME			COLUMN NAME				DATA TYPE	TYPE NAME	PRECISION	LENGTH	SCALE	RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
-	
- 
-EcomGroupRelations 	GroupRelationsGroupID 	-9		 	nvarchar 	255 		510 	NULL	NULL	0 			NULL	NULL		-9			 	NULL				510 				1 					NO 			39 	 
-EcomGroupRelations 	GroupRelationsParentID 	-9		 	nvarchar 	255 		510 	NULL	NULL	0 			NULL	NULL		-9 				NULL				510 				2 					NO 			39 	 
-EcomGroupRelations 	GroupRelationsSorting 	4 			int 		10		 	4 		0	 	10 		1 			NULL	((0)) 		4 				NULL				NULL				3 					YES 		38 	 
- 
