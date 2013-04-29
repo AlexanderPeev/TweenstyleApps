@@ -1,8 +1,6 @@
 package dk.tweenstyle.android.app.model;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
 
 public class Settings {
 
@@ -16,21 +14,12 @@ public class Settings {
 		return strings.put(key, value);
 	}
 
-	public String getValue(String key) {
-		return strings.get(key);
+	public boolean containsKey(String key) {
+		return strings.containsKey(key);
 	}
 
-	public String getKey(String value) {
-		Iterator<Entry<String, String>> it = strings.entrySet().iterator();
-		String ret = null;
-		while (it.hasNext()) {
-			Entry<String, String> o = it.next();
-			if (o.getValue().equals(value)) {
-				ret = o.getKey();
-				break;
-			}
-		}
-		return ret;
+	public String getValue(String key) {
+		return strings.get(key);
 	}
 
 	public HashMap<String, String> getStrings() {
