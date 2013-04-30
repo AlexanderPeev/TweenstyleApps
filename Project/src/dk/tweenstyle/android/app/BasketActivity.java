@@ -28,7 +28,7 @@ public class BasketActivity extends Activity {
 		setContentView(R.layout.activity_basket);
 
 		final ListView myListView = (ListView)findViewById(R.id.listView1);
-		final MyArrayAdapter<Product> adapter2 = new MyArrayAdapter<Product>(this, R.layout.listview_itemrow, ProductSource.getInstance().getProducts().toArray(new Product[0]));
+		final MyArrayAdapter<Product> adapter2 = new MyArrayAdapter<Product>(this, R.layout.listview_itemrow_basket, ProductSource.getInstance().getProducts().toArray(new Product[0]));
 		myListView.setAdapter(adapter2);
 
 		myListView.setOnItemLongClickListener (new OnItemLongClickListener() {
@@ -46,7 +46,7 @@ public class BasketActivity extends Activity {
 							ProductSource.getInstance().deleteSelected(position);
 							Toast toasting = Toast.makeText(getApplicationContext(), "You deleted " + p.getProductName() + " with " + item.getTitle(), Toast.LENGTH_LONG);
 							toasting.show();
-							final MyArrayAdapter<Product> adapter2 = new MyArrayAdapter<Product>(this, R.layout.listview_itemrow, ProductSource.getInstance().getProducts().toArray(new Product[0]));
+							final MyArrayAdapter<Product> adapter2 = new MyArrayAdapter<Product>(this, R.layout.listview_itemrow_basket, ProductSource.getInstance().getProducts().toArray(new Product[0]));
 							myListView.setAdapter(adapter2);
 						}
 						else if(item.equals("See details")){
