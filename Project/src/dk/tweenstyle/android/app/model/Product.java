@@ -23,7 +23,9 @@ public class Product {
 	private int maxAge;
 	private int minShoeSize;
 	private int maxShoeSize;
-	private Manufacturer manufacturer = null;
+	private String website;
+	private String logo;
+	private String description;
 	private ArrayList<SalesDiscount> discounts = new ArrayList<SalesDiscount>();
 	private ArrayList<GroupProductRelation> gpr = new ArrayList<GroupProductRelation>();
 	private ArrayList<Product> products = new ArrayList<Product>();
@@ -72,25 +74,8 @@ public class Product {
 		discounts.remove(d);
 		}
 	
-	public Manufacturer getManufacturer() {
-		return manufacturer;
-		}
+		
 	
-	public void setManufacturer(Manufacturer m) {
-		if (manufacturer == m)
-		return;
-		assert manufacturer == null;
-		m.addProduct(this);
-		manufacturer = m;
-		}
-	
-	public void resetManufacturer() {
-		if (manufacturer == null)
-		return;
-		manufacturer.removeProduct(this);
-		manufacturer = null;
-		}
-
 	public Product(){
 
 	}
@@ -202,5 +187,29 @@ public class Product {
 	}
 	public void setMaxShoeSize(int maxShoeSize) {
 		this.maxShoeSize = maxShoeSize;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
