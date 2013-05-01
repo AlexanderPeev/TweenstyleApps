@@ -45,9 +45,9 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			product.setMaxAge(object.getInt("maxAge"));
 			product.setMinShoeSize(object.getInt("minShoeSize"));
 			product.setMaxShoeSize(object.getInt("maxShoeSize"));
-			product.setWebsite(object.getString("website"));
-			product.setLogo(object.getString("logo"));
-			product.setDescription(object.getString("description"));
+			product.setWebsite(object.getString("manufacturerWebsite"));
+			product.setLogo(object.getString("manufacturerLogo"));
+			product.setDescription(object.getString("manufacturerDescription"));
 			
 			JSONArray discounts = object.getJSONArray("discounts");
 			for (int i = 0, max = discounts.length(); i < max; i++) {
