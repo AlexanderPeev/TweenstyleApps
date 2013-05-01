@@ -10,7 +10,7 @@ import dk.tweenstyle.android.app.model.Gender;
 import dk.tweenstyle.android.app.model.Product;
 
 public class ProductJSONLoader implements JSONLoader<Product> {
-
+	
 	@Override
 	public Product loadObject(JSONObject object) {
 		Product product = new Product();
@@ -19,12 +19,16 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			String gender = object.getString("gender");
 			if (gender.startsWith("f")) {
 				product.setGender(Gender.FEMALE);
-			} else if (gender.startsWith("m")) {
+			}
+			else if (gender.startsWith("m")) {
 				product.setGender(Gender.MALE);
-			} else
+			}
+			else {
 				product.setGender(Gender.UNISEX);
+			}
 			product.setVariantId(object.getInt("variantId"));
 			product.setBasePrice(object.getDouble("basePrice"));
+			product.setCurrentPrice(object.getDouble("currentPrice"));
 			product.setNumber(object.getInt("number"));
 			product.setName(object.getString("name"));
 			product.setActive(object.getBoolean("isActive"));
@@ -44,19 +48,19 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			product.setWebsite(object.getString("website"));
 			product.setLogo(object.getString("logo"));
 			product.setDescription(object.getString("description"));
-
+			
 			JSONArray discounts = object.getJSONArray("discounts");
 			for (int i = 0, max = discounts.length(); i < max; i++) {
 				String discount = discounts.getString(i);
 				product.addDiscount(discount);
 			}
-
+			
 			JSONArray groups = object.getJSONArray("groups");
 			for (int i = 0, max = groups.length(); i < max; i++) {
 				String group = groups.getString(i);
 				product.addGpr(group);
 			}
-
+			
 			JSONArray variants = object.optJSONArray("variants");
 			if (variants != null) {
 				for (int i = 0, max = variants.length(); i < max; i++) {
@@ -64,12 +68,13 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 					product.addProduct(this.loadObject(variant));
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			product = null;
 			Log.d("json", "Trouble loading Product object from JSON", e);
 		}
-
+		
 		return product;
 	}
-
+	
 }

@@ -14,19 +14,19 @@ public class SettingsJSONLoader implements JSONLoader<Settings> {
 	@Override
 	public Settings loadObject(JSONObject object) {
 		Settings settings = new Settings();
+		@SuppressWarnings("unchecked")
 		Iterator<String> it = object.keys();
 		try {
-		while(it.hasNext()){
-			String k = it.next();
-				settings.put(k, object.getString(k));
+			while (it.hasNext()) {
+				String k = it.next() + "";
+				settings.put(k, object.get(k) + "");
+			}
 		}
-		} catch (JSONException e) {
-			   settings = null;
-			   Log.d("json", "Trouble loading Settings object from JSON", e);
-			  }
+		catch (JSONException e) {
+			settings = null;
+			Log.d("json", "Trouble loading Settings object from JSON", e);
+		}
 		return settings;
 	}
-	
-
 	
 }

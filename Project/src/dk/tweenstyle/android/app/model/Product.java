@@ -9,6 +9,7 @@ public class Product {
 	private Gender gender;
 	private int variantId;
 	private double basePrice;
+	private double currentPrice;
 	private int number;
 	private String name;
 	private boolean isActive;
@@ -108,6 +109,14 @@ public class Product {
 
 	public void setBasePrice(double basePrice) {
 		this.basePrice = basePrice;
+	}
+	
+	public double getCurrentPrice() {
+		return currentPrice;
+	}
+	
+	public void setCurrentPrice(double currentPrice) {
+		this.currentPrice = currentPrice;
 	}
 
 	public int getNumber() {
