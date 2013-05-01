@@ -5,28 +5,30 @@ import java.util.List;
 
 public class Group {
 
-	private int Id;
+	private String id;
 	private String name;
 	private List<String> groups = new ArrayList<String>();
 	private List<Product> products = new ArrayList<Product>();
 	private List<Discount> discounts = new ArrayList<Discount>();
+	
+	public Group(){}
 
-	public Group(int id, String name, List<String> groups,
+	public Group(String id, String name, List<String> groups,
 			List<Product> products, List<Discount> discounts) {
 
-		Id = id;
+		this.id = id;
 		this.name = name;
 		this.groups = groups;
 		this.products = products;
 		this.discounts = discounts;
 	}
 
-	public int getId() {
-		return Id;
+	public String getId() {
+		return id;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
