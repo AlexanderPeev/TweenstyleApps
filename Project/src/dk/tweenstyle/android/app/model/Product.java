@@ -26,8 +26,8 @@ public class Product {
 	private String website;
 	private String logo;
 	private String description;
-	private ArrayList<SalesDiscount> discounts = new ArrayList<SalesDiscount>();
-	private ArrayList<GroupProductRelation> gpr = new ArrayList<GroupProductRelation>();
+	private ArrayList<String> discounts = new ArrayList<String>();
+	private ArrayList<String> gpr = new ArrayList<String>();
 	private ArrayList<Product> products = new ArrayList<Product>();
 	
 	void addProduct(Product p) {
@@ -42,33 +42,33 @@ public class Product {
 		products.remove(p);
 		}
 	
-	public ArrayList<GroupProductRelation> getGpr() {
-		return new ArrayList<GroupProductRelation>(gpr);
+	public ArrayList<String> getGpr() {
+		return new ArrayList<String>(gpr);
 		}
 	
-	void addGpr(GroupProductRelation g) {
+	void addGpr(String g) {
 		if (gpr.contains(g))
 		return;
 		gpr.add(g);
 		}
 	
-	void removeGpr(GroupProductRelation g) {
+	void removeGpr(String g) {
 		if (!gpr.contains(g))
 		return;
 		gpr.remove(g);
 		}
 	
-	public ArrayList<SalesDiscount> getDiscounts() {
-		return new ArrayList<SalesDiscount>(discounts);
+	public ArrayList<String> getDiscounts() {
+		return new ArrayList<String>(discounts);
 		}
 	
-	void addDiscount(SalesDiscount d) {
+	void addDiscount(String d) {
 		if (discounts.contains(d))
 		return;
 		discounts.add(d);
 		}
 	
-	void removeDicount(SalesDiscount d) {
+	void removeDicount(String d) {
 		if (!discounts.contains(d))
 		return;
 		discounts.remove(d);

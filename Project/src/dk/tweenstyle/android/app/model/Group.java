@@ -7,11 +7,11 @@ public class Group {
 
 	private int Id;
 	private String name;
-	private List<Group> groups = new ArrayList<Group>();
+	private List<String> groups = new ArrayList<String>();
 	private List<Product> products = new ArrayList<Product>();
 	private List<Discount> discounts = new ArrayList<Discount>();
 
-	public Group(int id, String name, List<Group> groups,
+	public Group(int id, String name, List<String> groups,
 			List<Product> products, List<Discount> discounts) {
 
 		Id = id;
@@ -37,20 +37,20 @@ public class Group {
 		this.name = name;
 	}
 
-	public List<Group> getGroups() {
+	public List<String> getGroups() {
 		return groups;
 	}
 
-	public void setGroups(List<Group> groups) {
+	public void setGroups(List<String> groups) {
 		this.groups = groups;
 	}
 
-	public void addGroup(Group group) {
+	public void addGroup(String group) {
 
 		groups.add(group);
 	}
 
-	public void removeGroup(Group group) {
+	public void removeGroup(String group) {
 
 		groups.remove(group);
 
