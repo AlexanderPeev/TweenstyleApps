@@ -3,6 +3,7 @@ package dk.tweenstyle.android.app;
 import daoTest.ProductSource;
 import modelTest.Product;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +21,7 @@ import android.app.Activity;
  */
 
 @SuppressLint("NewApi")
-public class BasketActivity extends Activity {
+public class BasketActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
