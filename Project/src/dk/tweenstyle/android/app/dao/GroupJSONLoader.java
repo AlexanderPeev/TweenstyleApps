@@ -21,7 +21,7 @@ public class GroupJSONLoader implements JSONLoader<Group> {
 				group.addGroup(groupId);
 			}
 			
-			 String id = object.getString("id");
+			 int id = object.getInt("id");
 			 group.setId(id);
 			 String name = object.getString("name");
 			 group.setName(name);

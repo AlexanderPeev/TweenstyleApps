@@ -16,7 +16,7 @@ public class DiscountJSONLoader implements JSONLoader<Discount> {
 
 		Discount discount = new Discount();
 		try{
-			discount.setId(object.getString("id"));
+			discount.setId(object.getInt("id"));
 			discount.setType(object.getString("type"));
 			discount.setName(object.getString("name"));
 			discount.setPriceFixed(object.getDouble("priceFixed"));

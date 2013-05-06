@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Group {
 
-	private String id;
+	private int id;
 	private String name;
 	private List<String> groups = new ArrayList<String>();
 	private List<Product> products = new ArrayList<Product>();
@@ -13,7 +13,7 @@ public class Group {
 	
 	public Group(){}
 
-	public Group(String id, String name, List<String> groups,
+	public Group(int id, String name, List<String> groups,
 			List<Product> products, List<Discount> discounts) {
 
 		this.id = id;
@@ -23,11 +23,11 @@ public class Group {
 		this.discounts = discounts;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
