@@ -7,9 +7,10 @@ import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper{
 
+	public static final String COLUMN_ID="_id";
 	//PRODUCT TABLE
 	public static final String TABLE_Products ="product",
-			COLUMN_PRODUCT_ID = "_id",
+			COLUMN_PRODUCT_ID="id",
 			COLUMN_GENDER = "gender",
 			COLUMN_VARIANTID="variantId",
 			COLUMN_BACEPRICE = "bacePrice",
@@ -35,7 +36,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			COLUMN_PRODUCT_PRODUCT_ID="_productproductID";
 	//DISCOUNT TABLE
 	public static final String TABLE_Discount = "discount",
-			COLUMN_DISCOUNT_ID ="_id",
+			COLUMN_DISCOUNT_ID ="id",
 			COLUMN_TYPE = "type",
 			COLUMN_DISCOUNTNAME = "name",
 			COLUMN_PRICEFIXED = "priceFixed",
@@ -43,14 +44,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			COLUMN_DISCOUNT_PRODUCT_ID="discountproductID";
 	//GROUP TABLE
 	public static final String TABLE_GROUP =" group",
-			COLUMN_GROUP_ID ="_id",
+			COLUMN_GROUP_ID ="id",
 			COLUMN_GROUPNAME ="name",
 			COLUMN_GROUP_GRPUP_ID="groupgroupID",
 			COLUMN_GROUP_PRODUCT_ID="groupproductID",
 			COLUMN_GROUP_DISCOUNT_ID="groupdiscountID";
 	//SETTINGS TABLE
 	public static final String TABLE_SETTINGS ="settings",
-			COLUMN_SETTINGS_ID ="_id",
+			COLUMN_SETTINGS_ID ="id",
 			COLUMN_STRINGS ="strings";
 
 
@@ -61,7 +62,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	// Database creation sql statement
 	private static final String DATABASE_CREATEPRODUCT = "create table "
 			+ TABLE_Products + "(" 
-			+ COLUMN_PRODUCT_ID +" integer primary key autoincrement, " 
+			+ COLUMN_ID +" integer primary key autoincrement, "
+			+ COLUMN_PRODUCT_ID +" text not null, "
 			+ COLUMN_GENDER +" text not null, " 
 			+ COLUMN_VARIANTID +" integer, "
 			+ COLUMN_BACEPRICE +" INTEGER, "
@@ -88,7 +90,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	private static final String DATABASE_CREATEDISCOUNT = "create table"
 			+ TABLE_Discount + "("
-			+ COLUMN_DISCOUNT_ID + " integer primary key autoincrement, "
+			+ COLUMN_ID + " integer primary key autoincrement, "
+			+ COLUMN_DISCOUNT_ID +" text not null, "
 			+ COLUMN_TYPE +" text not null, "
 			+ COLUMN_DISCOUNTNAME +" text not null, "
 			+ COLUMN_PRICEFIXED + " integer, "
@@ -97,7 +100,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	private static final String DATABASE_CREATEGROUP="create table"
 			+ TABLE_GROUP +"("
-			+ COLUMN_GROUP_ID +" integer primary key autoincrement, "
+			+ COLUMN_ID +" integer primary key autoincrement, "
+			+ COLUMN_GROUP_GRPUP_ID +" text not null, "
 			+ COLUMN_GROUPNAME + " text not null, "
 			+ COLUMN_GROUP_GRPUP_ID + " integer, "
 			+ COLUMN_GROUP_PRODUCT_ID + " integer, "
@@ -105,7 +109,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	private static final String DATABASE_CREATESETTNGS ="create table"
 			+ TABLE_SETTINGS +"("
-			+ COLUMN_SETTINGS_ID +" integer primary key autoincrement, "
+			+ COLUMN_ID +" integer primary key autoincrement, "
+			+ COLUMN_SETTINGS_ID+ " text not null, "
 			+ COLUMN_STRINGS +" text not null );";
 
 	public MySQLiteHelper(Context context) {

@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class Discount {
 	
-	private int id;
+	private String  id;
 	private String type, name;
 	private double priceFixed,pricePercentage;
 	
 	private List<Product> products = new ArrayList<Product>();
 	
-	public Discount(int id, String type, String name,  double price,  double percentage){
+	public Discount(String id, String type, String name,  double price,  double percentage){
 		this.id =id;
 		this.type=type;
 		this.name =name;
@@ -26,10 +26,10 @@ public class Discount {
 	public Discount() {
 		// TODO Auto-generated constructor stub
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getType() {
