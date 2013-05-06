@@ -5,6 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * Here we creates the database, and its tables.
+ * @author Christopher
+ *
+ */
 public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	public static final String COLUMN_ID="_id";
