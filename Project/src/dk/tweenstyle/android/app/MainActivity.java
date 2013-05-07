@@ -6,8 +6,10 @@ import java.net.URISyntaxException;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import dk.tweenstyle.android.app.dao.MainJSONLoader;
 
 /**
@@ -20,19 +22,46 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		initMainJSONLoader();// Piotr Suski
+		Button btnBoys = (Button) findViewById(R.id.btnBoys);
+		btnBoys.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		Button btnGirls = (Button) findViewById(R.id.btnGirls);
+		btnGirls.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		Button btnTweens = (Button) findViewById(R.id.btnTweens);
+		btnTweens.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		initMainJSONLoader();
 	}
 
-	private void initMainJSONLoader() {// Piotr Suski
-		ProgressDialog pd = ProgressDialog.show(this, "", "Please Wait...", true, false);
+	private void initMainJSONLoader() {
+		ProgressDialog pd = ProgressDialog.show(this, "Please wait", "");
 		MainJSONLoader jl = new MainJSONLoader(pd);
 		try {
 			jl.loadJSONData(jl.fetchJSONData(new URI("http://tweenstylekopi.net.dynamicweb.dk/Default.aspx?ID=3725")));
-		} catch (URISyntaxException e) {
-			Log.e("MainActivity", "Unable to fetch data from URL. " + e);
 		} catch (InterruptedException e) {
-			Log.e("MainActivity", "Coœ nie tak z w¹tkiem. " + e);
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 	@Override
