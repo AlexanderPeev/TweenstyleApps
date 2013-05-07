@@ -7,7 +7,7 @@ public class Product {
 
 	private String id;
 	private Gender gender;
-	private int variantId;
+	private String variantId;
 	private double basePrice;
 	private double currentPrice;
 	private int number;
@@ -95,11 +95,11 @@ public class Product {
 		this.gender = gender;
 	}
 
-	public int getVariantId() {
+	public String getVariantId() {
 		return variantId;
 	}
 
-	public void setVariantId(int variantId) {
+	public void setVariantId(String variantId) {
 		this.variantId = variantId;
 	}
 

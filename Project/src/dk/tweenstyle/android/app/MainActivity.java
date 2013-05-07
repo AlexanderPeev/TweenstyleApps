@@ -6,11 +6,13 @@ import java.net.URISyntaxException;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import dk.tweenstyle.android.app.dao.MainJSONLoader;
+import dk.tweenstyle.android.app.dao.MemoryDAO;
 
 /**
  * Reverted manually by Aleksandar.
@@ -52,16 +54,28 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	private void initMainJSONLoader() {
-		ProgressDialog pd = ProgressDialog.show(this, "Please wait", "");
-		MainJSONLoader jl = new MainJSONLoader(pd);
-		try {
-			jl.loadJSONData(jl.fetchJSONData(new URI("http://tweenstylekopi.net.dynamicweb.dk/Default.aspx?ID=3725")));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
+		final ProgressDialog pd = ProgressDialog.show(this, "Please wait", "");
+		Log.d("json", "Starting init... ");
+		Thread t = new Thread(new Runnable(){
+			@Override
+			public void run() {
+				MainJSONLoader jl = new MainJSONLoader();
+				try {
+					Log.d("json", "Starting to load... ");
+					
+					MemoryDAO dao = jl.loadJSONData(jl.fetchJSONData(new URI("http://tweenstylekopi.net.dynamicweb.dk/Default.aspx?ID=3725")));
 
+					Log.d("json", "Done loading... ");
+					
+					Log.d("json", "Total products: " + dao.getTotalProducts());
+					
+				} catch (URISyntaxException e) {
+					Log.d("json", "Malformed uri: ", e);
+				}
+				pd.dismiss();
+			}});
+
+		t.start();
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			else {
 				product.setGender(Gender.UNISEX);
 			}
-			product.setVariantId(object.getInt("variantId"));
+			product.setVariantId(object.getString("variantId"));
 			product.setBasePrice(object.getDouble("basePrice"));
 			product.setCurrentPrice(object.getDouble("currentPrice"));
 			product.setNumber(object.getInt("number"));

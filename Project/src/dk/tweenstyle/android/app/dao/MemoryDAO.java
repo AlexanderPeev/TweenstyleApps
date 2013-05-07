@@ -13,6 +13,10 @@ public class MemoryDAO {
 	private ArrayList<Group> groups = new ArrayList<Group>();
 	private ArrayList<Discount> discounts = new ArrayList<Discount>();
 	private Settings settings = null;
+	
+	public int getTotalProducts(){
+		return this.products.size();
+	}
 
 	public Product addProduct(Product product) {
 		products.add(product);
