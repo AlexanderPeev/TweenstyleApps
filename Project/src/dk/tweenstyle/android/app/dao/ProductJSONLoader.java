@@ -1,6 +1,7 @@
 package dk.tweenstyle.android.app.dao;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,7 +36,8 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			product.setStock(object.getInt("stock"));
 			product.setShortDescription(object.getString("shortDescription"));
 			product.setLongDescription(object.getString("longDescription"));
-			DateFormat format = DateFormat.getInstance();
+			//DateFormat format = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.UK);
 			product.setTimeCreated(format.parse(object.getString("timeCreated")));
 			product.setTimeUpdated(format.parse(object.getString("timeUpdated")));
 			product.setDefaultVariantCombination(object
