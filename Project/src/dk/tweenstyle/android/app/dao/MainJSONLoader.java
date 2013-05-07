@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
 import android.util.Log;
 import dk.tweenstyle.android.app.model.Discount;
 import dk.tweenstyle.android.app.model.Group;
@@ -25,9 +26,11 @@ public class MainJSONLoader {
 	private JSONLoader<Discount> ldrDiscount;
 	private JSONLoader<Group> ldrGroup;
 	private JSONLoader<Settings> ldrSettings;
+	private ProgressDialog processDialog;
 
-	public MainJSONLoader() {
+	public MainJSONLoader(ProgressDialog pd) {
 		this.setupLoaders();
+		this.processDialog = pd;
 	}
 
 	private void setupLoaders() {
@@ -37,30 +40,52 @@ public class MainJSONLoader {
 		this.ldrSettings = new SettingsJSONLoader();
 	}
 
-	public String fetchJSONData(URI uri) {
-		String result = null;
-		try {
-			DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
-			HttpPost httppost = new HttpPost(uri);
-			httppost.setHeader("Content-type", "application/json");
+	public String fetchJSONData(URI uri) throws InterruptedException {
+		Thread t = new Thread(new JSONLoaderThread(uri));
+		t.start();
+		t.join();
+		return ((JSONLoaderThread) t).getValue();
+	}
 
-			InputStream inputStream = null;
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
+	class JSONLoaderThread extends Thread {
+		private String ret;
+		private URI uri;
 
-			inputStream = entity.getContent();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-			StringBuilder sb = new StringBuilder();
-
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
-			}
-			result = sb.toString();
-		} catch (Exception e) {
-			Log.e("json", "Error while fetching data from CMS:" + e);
+		public JSONLoaderThread(URI uri) {
+			this.uri = uri;
 		}
-		return result;
+
+		@Override
+		public void run() {
+			try {
+				DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
+				HttpPost httppost = new HttpPost(uri);
+				httppost.setHeader("Content-type", "application/json");
+
+				InputStream inputStream = null;
+				HttpResponse response = httpclient.execute(httppost);
+				HttpEntity entity = response.getEntity();
+
+				inputStream = entity.getContent();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
+				StringBuilder sb = new StringBuilder();
+
+				String line = null;
+				while ((line = reader.readLine()) != null) {
+					sb.append(line + "\n");
+				}
+				ret = sb.toString();
+			} catch (Exception e) {
+				Log.e("json", "Error while fetching data from CMS:" + e);
+			}
+			if (processDialog != null) {
+				processDialog.dismiss();
+			}
+		}
+
+		public String getValue() {
+			return ret;
+		}
 	}
 
 	public MemoryDAO loadJSONData(String data) {
