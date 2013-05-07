@@ -41,7 +41,7 @@ public class MainJSONLoader {
 	}
 
 	public String fetchJSONData(URI uri) throws InterruptedException {
-		Thread t = new Thread(new JSONLoaderThread(uri));
+		JSONLoaderThread t = new JSONLoaderThread(uri);
 		t.start();
 		t.join();
 		return ((JSONLoaderThread) t).getValue();
