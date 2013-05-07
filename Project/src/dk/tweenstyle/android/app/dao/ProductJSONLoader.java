@@ -29,7 +29,7 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			product.setVariantId(object.getString("variantId"));
 			product.setBasePrice(object.getDouble("basePrice"));
 			product.setCurrentPrice(object.getDouble("currentPrice"));
-			product.setNumber(object.getInt("number"));
+			product.setNumber(object.getString("number"));
 			product.setName(object.getString("name"));
 			product.setActive(object.getBoolean("isActive"));
 			product.setStock(object.getInt("stock"));
