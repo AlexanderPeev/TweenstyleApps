@@ -23,5 +23,5 @@ public enum Gender {
 //		return stringValue;
 //	}
 //	
-MALE,FEMALE,UNSIEX;	
+MALE,FEMALE,UNISEX;	
 }

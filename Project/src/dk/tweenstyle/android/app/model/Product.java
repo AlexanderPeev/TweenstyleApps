@@ -1,15 +1,16 @@
 package dk.tweenstyle.android.app.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Product {
 
-	private int id;
+	private String id;
 	private Gender gender;
-	private int variantId;
+	private String variantId;
 	private double basePrice;
-	private int number;
+	private double currentPrice;
+	private String number;
 	private String name;
 	private boolean isActive;
 	private int stock;
@@ -29,162 +30,203 @@ public class Product {
 	private ArrayList<String> discounts = new ArrayList<String>();
 	private ArrayList<String> gpr = new ArrayList<String>();
 	private ArrayList<Product> products = new ArrayList<Product>();
-	
-	void addProduct(Product p) {
+
+	public void addProduct(Product p) {
 		if (products.contains(p))
-		return;
+			return;
 		products.add(p);
-		}
-	
-	void removeProduct(Product p) {
+	}
+
+	public void removeProduct(Product p) {
 		if (!products.contains(p))
-		return;
+			return;
 		products.remove(p);
-		}
-	
+	}
+
 	public ArrayList<String> getGpr() {
 		return new ArrayList<String>(gpr);
-		}
-	
-	void addGpr(String g) {
+	}
+
+	public void addGpr(String g) {
 		if (gpr.contains(g))
-		return;
+			return;
 		gpr.add(g);
-		}
-	
-	void removeGpr(String g) {
+	}
+
+	public void removeGpr(String g) {
 		if (!gpr.contains(g))
-		return;
+			return;
 		gpr.remove(g);
-		}
-	
+	}
+
 	public ArrayList<String> getDiscounts() {
 		return new ArrayList<String>(discounts);
-		}
-	
-	void addDiscount(String d) {
+	}
+
+	public void addDiscount(String d) {
 		if (discounts.contains(d))
-		return;
+			return;
 		discounts.add(d);
-		}
-	
-	void removeDicount(String d) {
+	}
+
+	public void removeDicount(String d) {
 		if (!discounts.contains(d))
-		return;
+			return;
 		discounts.remove(d);
-		}
-	
-		
-	
-	public Product(){
+	}
+
+	public Product() {
 
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(String id) {
 		this.id = id;
 	}
+
 	public Gender getGender() {
 		return gender;
 	}
+
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	public int getVariantId() {
+
+	public String getVariantId() {
 		return variantId;
 	}
-	public void setVariantId(int variantId) {
+
+	public void setVariantId(String variantId) {
 		this.variantId = variantId;
 	}
+
 	public double getBasePrice() {
 		return basePrice;
 	}
+
 	public void setBasePrice(double basePrice) {
 		this.basePrice = basePrice;
 	}
-	public int getNumber() {
+	
+	public double getCurrentPrice() {
+		return currentPrice;
+	}
+	
+	public void setCurrentPrice(double currentPrice) {
+		this.currentPrice = currentPrice;
+	}
+
+	public String getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+
+	public void setNumber(String number) {
 		this.number = number;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public boolean isActive() {
 		return isActive;
 	}
+
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+
 	public int getStock() {
 		return stock;
 	}
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
 	public String getShortDescription() {
 		return shortDescription;
 	}
+
 	public void setShortDescription(String shortDescription) {
 		this.shortDescription = shortDescription;
 	}
+
 	public String getLongDescription() {
 		return longDescription;
 	}
+
 	public void setLongDescription(String longDescription) {
 		this.longDescription = longDescription;
 	}
+
 	public Date getTimeCreated() {
 		return timeCreated;
 	}
+
 	public void setTimeCreated(Date timeCreated) {
 		this.timeCreated = timeCreated;
 	}
+
 	public Date getTimeUpdated() {
 		return timeUpdated;
 	}
+
 	public void setTimeUpdated(Date timeUpdated) {
 		this.timeUpdated = timeUpdated;
 	}
+
 	public String getDefaultVariantCombination() {
 		return defaultVariantCombination;
 	}
+
 	public void setDefaultVariantCombination(String defaultVariantCombination) {
 		this.defaultVariantCombination = defaultVariantCombination;
 	}
+
 	public boolean isNew() {
 		return isNew;
 	}
+
 	public void setNew(boolean isNew) {
 		this.isNew = isNew;
 	}
+
 	public int getMinAge() {
 		return minAge;
 	}
+
 	public void setMinAge(int minAge) {
 		this.minAge = minAge;
 	}
+
 	public int getMaxAge() {
 		return maxAge;
 	}
+
 	public void setMaxAge(int maxAge) {
 		this.maxAge = maxAge;
 	}
+
 	public int getMinShoeSize() {
 		return minShoeSize;
 	}
+
 	public void setMinShoeSize(int minShoeSize) {
 		this.minShoeSize = minShoeSize;
 	}
+
 	public int getMaxShoeSize() {
 		return maxShoeSize;
 	}
+
 	public void setMaxShoeSize(int maxShoeSize) {
 		this.maxShoeSize = maxShoeSize;
 	}
