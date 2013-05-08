@@ -11,16 +11,15 @@ public class MiniBarFragment extends Fragment {
 	public MiniBarFragment() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public void onAttach(Activity activity) {
 		// TODO Auto-generated method stub
 		super.onAttach(activity);
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.menu_bar, container, false);
 		// super.onCreateView(inflater, container, savedInstanceState);
 	}

@@ -9,12 +9,23 @@ import dk.tweenstyle.android.app.model.Settings;
 
 public class MemoryDAO {
 
-	private ArrayList<Product> products = new ArrayList<Product>();
-	private ArrayList<Group> groups = new ArrayList<Group>();
-	private ArrayList<Discount> discounts = new ArrayList<Discount>();
-	private Settings settings = null;
-	
-	public int getTotalProducts(){
+	private static MemoryDAO instance = null;
+
+	private static ArrayList<Product> products = new ArrayList<Product>();
+	private static ArrayList<Group> groups = new ArrayList<Group>();
+	private static ArrayList<Discount> discounts = new ArrayList<Discount>();
+	private static Settings settings = null;
+
+	private MemoryDAO() {
+	}
+
+	public static MemoryDAO getInstance() {
+		if (instance == null)
+			instance = new MemoryDAO();
+		return instance;
+	}
+
+	public int getTotalProducts() {
 		return this.products.size();
 	}
 
@@ -51,6 +62,18 @@ public class MemoryDAO {
 
 	public void setSettings(Settings settings) {
 		this.settings = settings;
+	}
+
+	public static ArrayList<Discount> getDiscounts() {
+		return discounts;
+	}
+
+	public static ArrayList<Group> getGroups() {
+		return groups;
+	}
+
+	public static ArrayList<Product> getProducts() {
+		return products;
 	}
 
 }

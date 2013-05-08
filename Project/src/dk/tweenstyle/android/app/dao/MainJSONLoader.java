@@ -62,9 +62,9 @@ public class MainJSONLoader {
 		}
 		return result;
 	}
-	
+
 	public MemoryDAO loadJSONData(String data) {
-		MemoryDAO dao = new MemoryDAO();
+		MemoryDAO dao = MemoryDAO.getInstance();
 		try {
 			JSONObject jObject = new JSONObject(data);
 			JSONArray products = jObject.getJSONArray("products");

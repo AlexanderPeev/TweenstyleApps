@@ -29,11 +29,8 @@ public class MainActivity extends FragmentActivity {
 		btnBoys.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
 				Intent i = new Intent(MainActivity.this, CategoriesActivity.class);
-				startActivity(i); 
-		       
-		        
+				startActivity(i);
 			}
 		});
 
@@ -42,8 +39,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(MainActivity.this, CategoriesActivity.class);
-				startActivity(i); 
-
+				startActivity(i);
 			}
 		});
 
@@ -52,8 +48,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(MainActivity.this, CategoriesActivity.class);
-				startActivity(i); 
-
+				startActivity(i);
 			}
 		});
 		initMainJSONLoader();
@@ -62,24 +57,26 @@ public class MainActivity extends FragmentActivity {
 	private void initMainJSONLoader() {
 		final ProgressDialog pd = ProgressDialog.show(this, "Please wait", "");
 		Log.d("json", "Starting init... ");
-		Thread t = new Thread(new Runnable(){
+		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				MainJSONLoader jl = new MainJSONLoader();
 				try {
 					Log.d("json", "Starting to load... ");
-					
-					MemoryDAO dao = jl.loadJSONData(jl.fetchJSONData(new URI("http://tweenstylekopi.net.dynamicweb.dk/Default.aspx?ID=3725")));
+
+					MemoryDAO dao = jl.loadJSONData(jl
+							.fetchJSONData(new URI("http://tweenstylekopi.net.dynamicweb.dk/Default.aspx?ID=3725")));
 
 					Log.d("json", "Done loading... ");
-					
+
 					Log.d("json", "Total products: " + dao.getTotalProducts());
-					
+
 				} catch (URISyntaxException e) {
 					Log.d("json", "Malformed uri: ", e);
 				}
 				pd.dismiss();
-			}});
+			}
+		});
 
 		t.start();
 	}
