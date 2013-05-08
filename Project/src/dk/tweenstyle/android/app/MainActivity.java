@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -28,8 +29,11 @@ public class MainActivity extends FragmentActivity {
 		btnBoys.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
+				
+				Intent i = new Intent(MainActivity.this, CategoriesActivity.class);
+				startActivity(i); 
+		       
+		        
 			}
 		});
 
@@ -37,7 +41,8 @@ public class MainActivity extends FragmentActivity {
 		btnGirls.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				Intent i = new Intent(MainActivity.this, CategoriesActivity.class);
+				startActivity(i); 
 
 			}
 		});
@@ -46,7 +51,8 @@ public class MainActivity extends FragmentActivity {
 		btnTweens.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				Intent i = new Intent(MainActivity.this, CategoriesActivity.class);
+				startActivity(i); 
 
 			}
 		});
