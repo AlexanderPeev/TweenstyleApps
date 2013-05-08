@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Discount {
 	
-	private String id;
+	private String  id;
 	private String type, name;
 	private double priceFixed,pricePercentage;
 	
