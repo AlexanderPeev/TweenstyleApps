@@ -1,18 +1,17 @@
 package dk.tweenstyle.android.app;
 
-import daoTest.ProductSource;
 import modelTest.Product;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Toast;
-import android.annotation.SuppressLint;
-import android.app.Activity;
+import daoTest.ProductSource;
 
 /**
  * This is the basket activity, handling the items in the basket.
