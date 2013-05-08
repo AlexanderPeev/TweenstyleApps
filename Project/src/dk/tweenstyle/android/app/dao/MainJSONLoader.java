@@ -38,7 +38,7 @@ public class MainJSONLoader {
 	}
 
 	public String fetchJSONData(URI uri) {
-		String result = null;
+		String result = "";
 		try {
 			DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
 			HttpPost httppost = new HttpPost(uri);
@@ -62,7 +62,7 @@ public class MainJSONLoader {
 		}
 		return result;
 	}
-
+	
 	public MemoryDAO loadJSONData(String data) {
 		MemoryDAO dao = new MemoryDAO();
 		try {

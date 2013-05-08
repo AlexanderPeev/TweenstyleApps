@@ -10,7 +10,7 @@ public class Product {
 	private String variantId;
 	private double basePrice;
 	private double currentPrice;
-	private int number;
+	private String number;
 	private String name;
 	private boolean isActive;
 	private int stock;
@@ -119,11 +119,11 @@ public class Product {
 		this.currentPrice = currentPrice;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 

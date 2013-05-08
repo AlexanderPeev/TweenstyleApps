@@ -1,6 +1,7 @@
 package dk.tweenstyle.android.app.dao;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,14 +29,21 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			}
 			product.setVariantId(object.getString("variantId"));
 			product.setBasePrice(object.getDouble("basePrice"));
-			product.setCurrentPrice(object.getDouble("currentPrice"));
-			product.setNumber(object.getInt("number"));
+			double currentPrice = object.optDouble("currentPrice");
+			if (!Double.isNaN(currentPrice)) {
+				product.setCurrentPrice(currentPrice);
+			}
+			product.setNumber(object.getString("number"));
 			product.setName(object.getString("name"));
 			product.setActive(object.getBoolean("isActive"));
 			product.setStock(object.getInt("stock"));
 			product.setShortDescription(object.getString("shortDescription"));
 			product.setLongDescription(object.getString("longDescription"));
-			DateFormat format = DateFormat.getInstance();
+			// DateFormat format =
+			// DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
+			// DateFormat.MEDIUM);
+			SimpleDateFormat format = new SimpleDateFormat(
+					"yyyy-MM-dd HH:mm:ss", Locale.UK);
 			product.setTimeCreated(format.parse(object.getString("timeCreated")));
 			product.setTimeUpdated(format.parse(object.getString("timeUpdated")));
 			product.setDefaultVariantCombination(object
@@ -49,16 +57,20 @@ public class ProductJSONLoader implements JSONLoader<Product> {
 			product.setLogo(object.getString("manufacturerLogo"));
 			product.setDescription(object.getString("manufacturerDescription"));
 			
-			JSONArray discounts = object.getJSONArray("discounts");
-			for (int i = 0, max = discounts.length(); i < max; i++) {
-				String discount = discounts.getString(i);
-				product.addDiscount(discount);
+			JSONArray discounts = object.optJSONArray("discounts");
+			if (discounts != null) {
+				for (int i = 0, max = discounts.length(); i < max; i++) {
+					String discount = discounts.getString(i);
+					product.addDiscount(discount);
+				}
 			}
 			
-			JSONArray groups = object.getJSONArray("groups");
-			for (int i = 0, max = groups.length(); i < max; i++) {
-				String group = groups.getString(i);
-				product.addGpr(group);
+			JSONArray groups = object.optJSONArray("groups");
+			if (groups != null) {
+				for (int i = 0, max = groups.length(); i < max; i++) {
+					String group = groups.getString(i);
+					product.addGpr(group);
+				}
 			}
 			
 			JSONArray variants = object.optJSONArray("variants");
