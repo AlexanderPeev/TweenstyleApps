@@ -14,7 +14,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	public static final String COLUMN_ID="_id";
 	//PRODUCT TABLE
-	public static final String TABLE_Products ="product",
+	public static final String TABLE_PRODUCT ="product",
 			COLUMN_PRODUCT_ID="id",
 			COLUMN_GENDER = "gender",
 			COLUMN_VARIANTID="variantId",
@@ -40,7 +40,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			COLUMN_PRODUCT_GROUP_ID = "_productgroupID",
 			COLUMN_PRODUCT_PRODUCT_ID="_productproductID";
 	//DISCOUNT TABLE
-	public static final String TABLE_Discount = "discount",
+	public static final String TABLE_DISCOUNT = "discount",
 			COLUMN_DISCOUNT_ID ="id",
 			COLUMN_TYPE = "type",
 			COLUMN_DISCOUNTNAME = "name",
@@ -66,7 +66,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	// Database creation sql statement
 	private static final String DATABASE_CREATEPRODUCT = "create table "
-			+ TABLE_Products + "(" 
+			+ TABLE_PRODUCT + "(" 
 			+ COLUMN_ID +" integer primary key autoincrement, "
 			+ COLUMN_PRODUCT_ID +" text not null, "
 			+ COLUMN_GENDER +" text not null, " 
@@ -94,7 +94,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			+ COLUMN_PRODUCT_PRODUCT_ID +" integer );";
 
 	private static final String DATABASE_CREATEDISCOUNT = "create table"
-			+ TABLE_Discount + "("
+			+ TABLE_DISCOUNT + "("
 			+ COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_DISCOUNT_ID +" text not null, "
 			+ COLUMN_TYPE +" text not null, "
@@ -135,8 +135,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		Log.w(MySQLiteHelper.class.getName(),
 				"Upgrading database from version " + oldVersion + " to "
 						+ newVersion + ", which will destroy all old data");
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Products);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Discount);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DISCOUNT);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GROUP);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTINGS);
 		onCreate(db);
