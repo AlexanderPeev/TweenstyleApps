@@ -91,9 +91,14 @@ public class MemoryDAO {
 		HashSet<Group> processed = new HashSet<Group>();
 		LinkedList<Group> queue = new LinkedList<Group>();
 		List<Product> products = g.getProducts();
-		List<Product> result = new LinkedList<Product>();
+		HashMap<String, Product> result = new HashMap<String, Product>();
 		if(products != null){
-			result.addAll(products);
+			for(Product p : products){
+				String id = null;
+				if(p != null && (id = p.getId()) != null){
+					result.put(id, p);
+				}
+			}
 		}
 		List<Group> children = g.getChildren();
 		processed.add(g);
@@ -104,7 +109,12 @@ public class MemoryDAO {
 				if(g != null && !processed.contains(g)){
 					products = g.getProducts();
 					if(products != null){
-						result.addAll(products);
+						for(Product p : products){
+							String id = null;
+							if(p != null && (id = p.getId()) != null){
+								result.put(id, p);
+							}
+						}
 					}
 
 					children = g.getChildren();
@@ -116,7 +126,7 @@ public class MemoryDAO {
 				}
 			}
 		}
-		return result;
+		return new LinkedList<Product>(result.values());
 	}
 	
 	public Group addGroup(Group group) {
