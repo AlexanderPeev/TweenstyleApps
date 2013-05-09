@@ -34,8 +34,7 @@ public class CategoriesActivity extends FragmentActivity {
 			}
 		});
 
-		MemoryDAO.getInstance();
-		final GroupArrayAdapter adapter = new GroupArrayAdapter(this, R.layout.category_item_row, MemoryDAO.getGroups());
+		final GroupArrayAdapter adapter = new GroupArrayAdapter(this, R.layout.category_item_row, MemoryDAO.getInstance().getGroups());
 		listview.setAdapter(adapter);
 	}
 

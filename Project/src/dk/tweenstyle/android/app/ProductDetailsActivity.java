@@ -1,5 +1,7 @@
 package dk.tweenstyle.android.app;
 
-public class ProductDetailsActivity {
+import android.support.v4.app.FragmentActivity;
+
+public class ProductDetailsActivity extends FragmentActivity {
 
 }
