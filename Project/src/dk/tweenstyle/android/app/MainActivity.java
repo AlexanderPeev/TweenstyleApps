@@ -32,15 +32,15 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(View v) {
 				Intent i = new Intent(MainActivity.this,
 						CategoriesActivity.class);
-				Bundle extras = i.getExtras();
 				MemoryDAO dao = MemoryDAO.getInstance();
-				if (dao != null && extras != null) {
+				if (dao != null) {
 					Settings settings = dao.getSettings();
 					if (settings != null) {
 						String groupID = settings
 								.getValue(Settings.SETTINGS_KEY_BOYS_GROUP_ID);
+						Log.d("groups", "Sending groupID == " + groupID);
 						if (groupID != null) {
-							extras.putString(
+							i.putExtra(
 									CategoriesActivity.INTENT_EXTRA_KEY_GROUP_ID,
 									groupID);
 						}
@@ -56,15 +56,15 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(View v) {
 				Intent i = new Intent(MainActivity.this,
 						CategoriesActivity.class);
-				Bundle extras = i.getExtras();
 				MemoryDAO dao = MemoryDAO.getInstance();
-				if (dao != null && extras != null) {
+				if (dao != null) {
 					Settings settings = dao.getSettings();
 					if (settings != null) {
 						String groupID = settings
 								.getValue(Settings.SETTINGS_KEY_GIRLS_GROUP_ID);
+						Log.d("groups", "Sending groupID == " + groupID);
 						if (groupID != null) {
-							extras.putString(
+							i.putExtra(
 									CategoriesActivity.INTENT_EXTRA_KEY_GROUP_ID,
 									groupID);
 						}
@@ -80,15 +80,15 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(View v) {
 				Intent i = new Intent(MainActivity.this,
 						CategoriesActivity.class);
-				Bundle extras = i.getExtras();
 				MemoryDAO dao = MemoryDAO.getInstance();
-				if (dao != null && extras != null) {
+				if (dao != null) {
 					Settings settings = dao.getSettings();
 					if (settings != null) {
 						String groupID = settings
 								.getValue(Settings.SETTINGS_KEY_BRANDS_GROUP_ID);
+						Log.d("groups", "Sending groupID == " + groupID);
 						if (groupID != null) {
-							extras.putString(
+							i.putExtra(
 									CategoriesActivity.INTENT_EXTRA_KEY_GROUP_ID,
 									groupID);
 						}
@@ -110,12 +110,17 @@ public class MainActivity extends FragmentActivity {
 				try {
 					Log.d("json", "Starting to load... ");
 					
-					MemoryDAO dao = jl.loadJSONData(jl
-							.fetchJSONData(new URI(
-									"http://tweenstylekopi.net.dynamicweb.dk/Default.aspx?ID=3725")));
-					dao.hookupGroups();
-					dao.hookupProducts();
+					String jsonData = jl.fetchJSONData(new URI(
+									"http://tweenstylekopi.net.dynamicweb.dk/Default.aspx?ID=3725"));
+
+					Log.d("json", "Done fetching... ");
+					MemoryDAO dao = jl.loadJSONData(jsonData);
+					jsonData = null;
 					Log.d("json", "Done loading... ");
+					dao.hookupGroups();
+					Log.d("json", "Done hooking up groups... ");
+					dao.hookupProducts();
+					Log.d("json", "Done hooking up products... ");
 					
 					Log.d("json", "Total products: " + dao.getTotalProducts());
 					

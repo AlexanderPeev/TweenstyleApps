@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import dk.tweenstyle.android.app.dao.MemoryDAO;
 import dk.tweenstyle.android.app.model.Group;
+import dk.tweenstyle.android.app.model.Product;
+import dk.tweenstyle.android.app.model.Settings;
 
 public class CategoriesActivity extends FragmentActivity {
 	public static final String INTENT_EXTRA_KEY_GROUP_ID = "GroupID";
@@ -45,20 +47,52 @@ public class CategoriesActivity extends FragmentActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long arg3) {
-				Log.i("MyLog", "DONE DONE Listener Is set!");
+				Object item = listview.getItemAtPosition(position);
+				if(item != null && item instanceof Group){
+					Group g = (Group)item;
+					String gID = g.getId();
+					Intent i = new Intent(CategoriesActivity.this,
+							CategoriesActivity.class);
+					MemoryDAO dao = MemoryDAO.getInstance();
+					if (dao != null) {
+						Settings settings = dao.getSettings();
+						if (settings != null) {
+							Log.d("groups", "Sending groupID == " + gID);
+							if (gID != null) {
+								i.putExtra(
+										CategoriesActivity.INTENT_EXTRA_KEY_GROUP_ID,
+										gID);
+							}
+						}
+					}
+					startActivity(i);
+				}
 			}
 		});
 		List<Group> children = new ArrayList<Group>();
+		Group group = null;
 		MemoryDAO dao = MemoryDAO.getInstance();
+		List<Product> productList = null;
 		if (dao != null) {
-			Group group = dao.getGroupById(groupID);
+			group = dao.getGroupById(groupID);
 			if (group != null) {
 				children = group.getChildren();
+				productList = dao.getFlatProductList(group);
 			}
 		}
+		if(productList == null){
+			productList = new ArrayList<Product>();
+		}
+		Log.d("groups", "GroupID == " + groupID);
+		Log.d("groups", "group == " + group);
+		Log.d("groups", "children == (total: " + children.size() + ") " + children);
+		
 		final GroupArrayAdapter adapter = new GroupArrayAdapter(this,
 				R.layout.category_item_row, children);
 		listview.setAdapter(adapter);
+
+		Log.d("groups", "productList == (total: " + productList.size() + ") " + productList);
+		
 	}
 	
 	// class Group {
