@@ -10,6 +10,7 @@ public class Group {
 	private List<String> groups = new ArrayList<String>();
 	private List<Product> products = new ArrayList<Product>();
 	private List<Discount> discounts = new ArrayList<Discount>();
+	private List<Group> children = new ArrayList<Group>();
 	
 	public Group(){}
 
@@ -94,6 +95,22 @@ public class Group {
 
 		discounts.remove(discount);
 
+	}
+
+	public List<Group> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Group> children) {
+		this.children = children;
+	}
+
+	public void addChild(Group child) {
+		children.add(child);
+	}
+
+	public void removeChild(Group child) {
+		children.remove(child);
 	}
 
 }
