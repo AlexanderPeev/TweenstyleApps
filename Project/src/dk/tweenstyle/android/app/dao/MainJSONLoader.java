@@ -21,6 +21,7 @@ import dk.tweenstyle.android.app.model.Product;
 import dk.tweenstyle.android.app.model.Settings;
 
 public class MainJSONLoader {
+	public static final int READ_BUFFER_SIZE = 2048;
 	private JSONLoader<Product> ldrProduct;
 	private JSONLoader<Discount> ldrDiscount;
 	private JSONLoader<Group> ldrGroup;
@@ -50,12 +51,21 @@ public class MainJSONLoader {
 
 			inputStream = entity.getContent();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-			StringBuilder sb = new StringBuilder();
+			StringBuilder sb = new StringBuilder(5000);
+			char[] buffer = new char[READ_BUFFER_SIZE];
 
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
+			int amountRead = 0;//, i = 0;
+			//String line = null;
+			while((amountRead = reader.read(buffer, 0, READ_BUFFER_SIZE)) >= 0){
+				if(amountRead > 0){
+					sb.append(new String(buffer, 0, amountRead));
+					//Log.d("fetch", "Fetched: " + ++i);
+				}
 			}
+			//while ((line = reader.readLine()) != null) {
+			//	sb.append(line + "\n");
+			//	Log.d("fetch", "Fetched: " + ++i);
+			//}
 			result = sb.toString();
 		} catch (Exception e) {
 			Log.e("json", "Error while fetching data from CMS:" + e);

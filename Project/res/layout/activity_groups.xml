@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    tools:context=".GroupsActivity" >
+
+    <!-- android.support.v7.widget.GridLayout -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pnlPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="85" >
+
+        <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/pager_title_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#33b5e5"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textColor="#fff" />
+        
+    </android.support.v4.view.ViewPager>
+    <!--
+    <FrameLayout
+        android:id="@+id/pnlGroupList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        />
+
+    -->
+    <!--
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+
+    -->
+    <!--
+    <FrameLayout 
+        android:id="@+id/pnlProductList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="productListWrapper"
+        android:layout_weight="65"
+        />
+
+    -->
+    <!--
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/listView1" 
+
+    -->
+
+    <FrameLayout
+        android:id="@+id/pnlMenuBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:tag="menuBarWrapper" />
+
+    <!--
+        android:layout_toEndOf="@id/vgrProductList"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+
+    -->
+
+</LinearLayout>

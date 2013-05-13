@@ -12,8 +12,15 @@
     <string name="go_back">Go back</string>
     <string name="check_out">Check out</string>
     <string name="product_image_description">This is the product image</string>
+    <string name="category_image_description">This is the category image</string>
     <string name="item_delete_label">Delete Item</string>
     <string name="item_details_label">See details</string>
     <string name="label_activity_basket">Basket</string>
+    <string name="title_fragment_groups">Groups</string>
+    <string name="title_fragment_products">Products</string>
+    
+    <string name="message_fetching_data">Fetching product data&#8230; </string>
+    <string name="message_loading_data">Loading retrieved product data&#8230; </string>
+    <string name="message_hooking_up">Finalizing&#8230; </string>
 
 </resources>

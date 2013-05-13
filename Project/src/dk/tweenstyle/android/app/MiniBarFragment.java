@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 
 public class MiniBarFragment extends Fragment {
 
@@ -25,7 +25,7 @@ public class MiniBarFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		if(container == null){
-			container = new RelativeLayout(this.getActivity());
+			container = new FrameLayout(this.getActivity());
 			Log.d("trouble", "Problem inflating MiniBarFragment - container was null. ", new Exception());
 			//return null;
 		}

@@ -2,17 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoriesActivity" >
+    tools:context=".ProductListActivity" >
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/productview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" >
-
-    </ListView>
-    
+        android:layout_alignParentTop="true"
+        android:fastScrollEnabled="true"
+         />
+    <!-- 
     <fragment
         android:id="@+id/menu_bar"
         android:name="dk.tweenstyle.android.app.MiniBarFragment"
@@ -21,5 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp" />
-
+	-->
+    
+    
 </RelativeLayout>
