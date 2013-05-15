@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
             android:id="@+id/productbrand"
-            android:textIsSelectable="true"
+            android:textIsSelectable="false"
             />
         
     </LinearLayout>
@@ -30,13 +30,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
             android:id="@+id/productname"
-            android:textIsSelectable="true"
+            android:textIsSelectable="false"
             />
 	
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
             android:id="@+id/priceview"
-            android:textIsSelectable="true"
+            android:textIsSelectable="false"
             />
 </LinearLayout>

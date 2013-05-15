@@ -1,0 +1,10 @@
+The variant groups table. 
+
+TABLE NAME			COLUMN NAME				DATA TYPE	TYPE NAME	PRECISION	LENGTH	SCALE	RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
+	 
+EcomVariantGroups 	VariantGroupID 			-9 			nvarchar 	255 		510 	NULL	NULL	0 			NULL	NULL		-9 				NULL				510 				1 					NO 			39 	 
+EcomVariantGroups 	VariantGroupLanguageID 	-9 			nvarchar 	50 			100 	NULL	NULL	0 			NULL	NULL		-9 				NULL				100 				2 					NO 			39 	 
+EcomVariantGroups 	VariantGroupName 		-9 			nvarchar 	255 		510 	NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				3 					YES 		39 	 
+EcomVariantGroups 	VariantGroupLabel 		-9 			nvarchar 	255 		510 	NULL	NULL	1 			NULL	NULL		-9 				NULL				510 				4 					YES 		39 	 
+EcomVariantGroups 	VariantGroupUnit 		-7 			bit 		1 			1 		NULL	NULL	1 			NULL	((0)) 		-7 				NULL				NULL				5 					YES 		50 	 
+ 

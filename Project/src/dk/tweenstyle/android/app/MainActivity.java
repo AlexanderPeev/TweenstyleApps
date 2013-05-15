@@ -153,6 +153,8 @@ public class MainActivity extends FragmentActivity {
 					Log.d("json", "Done hooking up groups... ");
 					dao.hookupProducts();
 					Log.d("json", "Done hooking up products... ");
+					dao.hookupVariants();
+					Log.d("json", "Done hooking up variants... ");
 
 					Log.d("json", "Total products: " + dao.getTotalProducts());
 

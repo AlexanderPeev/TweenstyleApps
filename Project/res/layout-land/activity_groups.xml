@@ -4,58 +4,84 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     tools:context=".GroupsActivity" >
-    <!-- 
-    android:orientation="vertical"
-     -->
+
+<!--     android:orientation="vertical" -->
 
     <FrameLayout
         android:id="@+id/pnlGroupList"
+        android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_width="200dp"
-        />
-    <!-- 
+        android:layout_alignParentTop="true" />
+    <!--
         android:layout_gravity="left"
         android:layout_alignParentLeft="true"
         android:layout_weight="20"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" 
-     -->
-    
-    <FrameLayout 
+        android:layout_alignParentTop="true"
+        
+    -->
+
+    <FrameLayout
         android:id="@+id/pnlProductList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:tag="productListWrapper"
-        android:layout_toRightOf="@id/pnlGroupList"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
         android:layout_marginBottom="50dp"
-        />
-    
+        android:layout_toRightOf="@id/pnlGroupList"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:tag="productListWrapper" />
+
+    <LinearLayout
+        android:id="@+id/pnlProductDetailsWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="50dp"
+        android:layout_toRightOf="@id/pnlGroupList"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:tag="productDetailsOuterWrapper"
+        android:visibility="invisible" >
+
+        <Button android:id="@+id/btnProductDetailsBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_back_product_details" />
+
+        <FrameLayout
+            android:id="@+id/pnlProductDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="5dp"
+            android:tag="productDetailsWrapper" />
+    </LinearLayout>
+
     <!--
         android:layout_gravity="center"
         android:layout_toRightOf="@id/listView1"
         android:layout_alignParentRight="true"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/listView1" 
-     -->
-    
+        android:layout_toEndOf="@id/listView1"
+        
+    -->
+
     <FrameLayout
         android:id="@+id/pnlMenuBar"
         android:layout_width="match_parent"
-        android:layout_toEndOf="@id/pnlProductList"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_height="50dp"
+        android:layout_toEndOf="@id/pnlProductList"
         android:tag="menuBarWrapper" />
-    
-    <!-- 
+
+    <!--
         android:layout_gravity="bottom"
         android:layout_toEndOf="@id/vgrProductList"
         android:layout_alignParentBottom="true"
@@ -63,6 +89,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-     -->
+        
+    -->
 
 </RelativeLayout>

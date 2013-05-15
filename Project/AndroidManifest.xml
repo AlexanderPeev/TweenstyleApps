@@ -7,8 +7,8 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-   <uses-permission android:name="android.permission.INTERNET"/>
-    
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -26,17 +26,15 @@
         </activity>
         <activity
             android:name="dk.tweenstyle.android.app.BasketActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
         </activity>
-        
         <activity
             android:name="dk.tweenstyle.android.app.GroupsActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
         </activity>
-        
         <activity
             android:name="dk.tweenstyle.android.app.ProductDetailsActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
         </activity>
     </application>
 

@@ -1,9 +1,9 @@
 package dk.tweenstyle.android.app;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,31 @@ import dk.tweenstyle.android.app.model.Group;
 import dk.tweenstyle.android.app.model.Settings;
 
 public class GroupListFragment extends Fragment {
+	
+	private GroupListProvider groupListProvider;
+	private static Group backGroup = null;
 	private List<Group> groups;
+	
+	public GroupListProvider getGroupListProvider() {
+		return groupListProvider;
+	}
+	
+	public void setGroupListProvider(GroupListProvider groupListProvider) {
+		this.groupListProvider = groupListProvider;
+	}
+	
+	private void setupBackGroup() {
+		if (backGroup == null) {
+			synchronized (GroupListFragment.class) {
+				if (backGroup == null) {
+					backGroup = new Group();
+					backGroup.setId("back");
+					backGroup
+							.setName(this.getString(R.string.label_back_group));
+				}
+			}
+		}
+	}
 	
 	public List<Group> getGroups() {
 		return groups;
@@ -36,6 +60,7 @@ public class GroupListFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		this.setupBackGroup();
 		if (container == null) {
 			container = new FrameLayout(this.getActivity());
 			Log.d("trouble",
@@ -51,43 +76,17 @@ public class GroupListFragment extends Fragment {
 		
 		List<Group> list = this.groups;
 		
-		if (list == null) {
-			Activity activity = this.getActivity();
-			if (activity != null) {
-				Intent intent = activity.getIntent();
-				
-				String groupID = null;
-				
-				if (intent != null) {
-					Bundle extras = intent.getExtras();
-					if (extras != null
-							&& extras
-									.containsKey(GroupsActivity.INTENT_EXTRA_KEY_GROUP_ID)) {
-						groupID = extras
-								.getString(GroupsActivity.INTENT_EXTRA_KEY_GROUP_ID);
-					}
-				}
-				
-				List<Group> children = new ArrayList<Group>();
-				Group group = null;
-				MemoryDAO dao = MemoryDAO.getInstance();
-				// List<Product> productList = null;
-				if (dao != null) {
-					group = dao.getGroupById(groupID);
-					if (group != null) {
-						children = group.getChildren();
-						// productList = dao.getFlatProductList(group);
-					}
-				}
-				if (children != null) {
-					list = children;
-				}
-			}
+		if (list == null && this.groupListProvider != null) {
+			list = this.groupListProvider.fetchGroupList();
 		}
 		
 		if (list == null) {
 			list = new ArrayList<Group>();
 		}
+		
+		LinkedList<Group> groups = new LinkedList<Group>(list);
+		groups.addFirst(backGroup);
+		list = groups;
 		
 		final GroupArrayAdapter adapter = new GroupArrayAdapter(
 				this.getActivity(), R.layout.listview_itemrow_group, list);
@@ -98,7 +97,13 @@ public class GroupListFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long arg3) {
+				if (position == 0) {
+					// First item is always the back dummy group
+					GUIUtil.finishOK(getActivity());
+					return;
+				}
 				Object item = listview.getItemAtPosition(position);
+				Log.d("guievent", "Groups List Fragment onItemClick: " + item);
 				if (item != null && item instanceof Group) {
 					Group g = (Group) item;
 					String gID = g.getId();
@@ -159,7 +164,12 @@ public class GroupListFragment extends Fragment {
 			ImageView imageView = (ImageView) rowView
 					.findViewById(R.id.rowImage);
 			textView.setText(group.getName());
-			imageView.setImageResource(R.drawable.jeans);
+			if ("back".equals(group.getId())) {
+				imageView.setImageResource(R.drawable.arrow_left);
+			}
+			else {
+				imageView.setImageResource(R.drawable.arrow_down);
+			}
 			return rowView;
 		}
 		

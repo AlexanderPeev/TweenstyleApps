@@ -19,6 +19,7 @@ import dk.tweenstyle.android.app.model.Discount;
 import dk.tweenstyle.android.app.model.Group;
 import dk.tweenstyle.android.app.model.Product;
 import dk.tweenstyle.android.app.model.Settings;
+import dk.tweenstyle.android.app.model.VariantGroup;
 
 public class MainJSONLoader {
 	public static final int READ_BUFFER_SIZE = 2048;
@@ -26,6 +27,7 @@ public class MainJSONLoader {
 	private JSONLoader<Discount> ldrDiscount;
 	private JSONLoader<Group> ldrGroup;
 	private JSONLoader<Settings> ldrSettings;
+	private JSONLoader<VariantGroup> ldrVariantGroups;
 
 	public MainJSONLoader() {
 		this.setupLoaders();
@@ -36,6 +38,7 @@ public class MainJSONLoader {
 		this.ldrDiscount = new DiscountJSONLoader();
 		this.ldrGroup = new GroupJSONLoader();
 		this.ldrSettings = new SettingsJSONLoader();
+		this.ldrVariantGroups = new VariantGroupJSONLoader();
 	}
 
 	public String fetchJSONData(URI uri) {
@@ -76,23 +79,33 @@ public class MainJSONLoader {
 	public MemoryDAO loadJSONData(String data) {
 		MemoryDAO dao = MemoryDAO.getInstance();
 		try {
-			JSONObject jObject = new JSONObject(data);
-			JSONArray products = jObject.getJSONArray("products");
-			for (int i = 0; i < products.length(); i++) {
+			JSONObject root = new JSONObject(data);
+			
+			JSONArray products = root.getJSONArray("products");
+			for (int i = 0, max = products.length(); i < max; i++) {
 				JSONObject oneObject = products.getJSONObject(i);
 				dao.addProduct(ldrProduct.loadObject(oneObject));
 			}
-			JSONArray groups = jObject.getJSONArray("groups");
-			for (int i = 0; i < groups.length(); i++) {
+			
+			JSONArray groups = root.getJSONArray("groups");
+			for (int i = 0, max = groups.length(); i < max; i++) {
 				JSONObject oneObject = groups.getJSONObject(i);
 				dao.addGroup(ldrGroup.loadObject(oneObject));
 			}
-			JSONArray discounts = jObject.getJSONArray("discounts");
-			for (int i = 0; i < discounts.length(); i++) {
+			
+			JSONArray discounts = root.getJSONArray("discounts");
+			for (int i = 0, max = discounts.length(); i < max; i++) {
 				JSONObject oneObject = discounts.getJSONObject(i);
 				dao.addDiscount(ldrDiscount.loadObject(oneObject));
 			}
-			JSONObject settings = jObject.getJSONObject("settings");
+			
+			JSONArray variantGroups = root.getJSONArray("variantGroups");
+			for (int i = 0, max = variantGroups.length(); i < max; i++) {
+				JSONObject oneObject = variantGroups.getJSONObject(i);
+				dao.addVariantGroup(ldrVariantGroups.loadObject(oneObject));
+			}
+			
+			JSONObject settings = root.getJSONObject("settings");
 			dao.setSettings(ldrSettings.loadObject(settings));
 		} catch (JSONException e) {
 			Log.e("json", "Error while fetching data from JSON:" + e);

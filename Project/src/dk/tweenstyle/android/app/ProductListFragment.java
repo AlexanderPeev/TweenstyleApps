@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,11 +18,30 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
-import dk.tweenstyle.android.app.dao.MemoryDAO;
-import dk.tweenstyle.android.app.model.Group;
 import dk.tweenstyle.android.app.model.Product;
 
 public class ProductListFragment extends Fragment {
+	
+	private ProductListProvider productListProvider;
+	
+	public ProductListProvider getProductListProvider() {
+		return productListProvider;
+	}
+	
+	public void setProductListProvider(ProductListProvider productListProvider) {
+		this.productListProvider = productListProvider;
+	}
+	
+	private ViewTransferDelegate<Product> productViewTransferDelegate;
+	
+	public ViewTransferDelegate<Product> getProductViewTransferDelegate() {
+		return productViewTransferDelegate;
+	}
+	
+	public void setProductViewTransferDelegate(
+			ViewTransferDelegate<Product> productViewTransferDelegate) {
+		this.productViewTransferDelegate = productViewTransferDelegate;
+	}
 	
 	public ProductListFragment() {
 		
@@ -62,38 +80,8 @@ public class ProductListFragment extends Fragment {
 		
 		List<Product> list = this.productList;
 		
-		if (list == null) {
-			Activity activity = this.getActivity();
-			if (activity != null) {
-				Intent intent = activity.getIntent();
-				
-				String groupID = null;
-				
-				if (intent != null) {
-					Bundle extras = intent.getExtras();
-					if (extras != null
-							&& extras
-									.containsKey(GroupsActivity.INTENT_EXTRA_KEY_GROUP_ID)) {
-						groupID = extras
-								.getString(GroupsActivity.INTENT_EXTRA_KEY_GROUP_ID);
-					}
-				}
-				
-				// List<Group> children = new ArrayList<Group>();
-				Group group = null;
-				MemoryDAO dao = MemoryDAO.getInstance();
-				List<Product> productList = null;
-				if (dao != null) {
-					group = dao.getGroupById(groupID);
-					if (group != null) {
-						// children = group.getChildren();
-						productList = dao.getFlatProductList(group);
-					}
-				}
-				if (productList != null) {
-					list = productList;
-				}
-			}
+		if (list == null && this.productListProvider != null) {
+			list = this.productListProvider.fetchProductList();
 		}
 		
 		if (list == null) {
@@ -118,10 +106,20 @@ public class ProductListFragment extends Fragment {
 				
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
-						int arg2, long arg3) {
-					
-					// TODO: Transfer to product view from here
-					
+						int position, long arg3) {
+					Object item = listview.getItemAtPosition(position);
+					if (item != null && item instanceof Product) {
+						Product product = (Product) item;
+						ViewTransferDelegate<Product> delegate = productViewTransferDelegate;
+						if (delegate != null) {
+							delegate.onViewTransferRequest(
+									ProductListFragment.this, product);
+						}
+						else {
+							Log.d("uievent",
+									"No product details delegate to transfer product to, in ProductListFragment. ");
+						}
+					}
 				}
 			});
 			

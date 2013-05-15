@@ -1,0 +1,12 @@
+The variant options table. 
+
+TABLE NAME				COLUMN NAME					DATA TYPE	TYPE NAME	PRECISION	LENGTH	SCALE	RADIX	NULLABLE	REMARKS	COLUMN DEF	SQL DATA TYPE	SQL DATETIME SUB	CHAR OCTET LENGTH	ORDINAL POSITION	IS NULLABLE	SS DATA TYPE
+
+EcomVariantsOptions 	VariantOptionID 			-9		 	nvarchar 	255 		510 	NULL	NULL	0		 	NULL	NULL		-9 				NULL				510 				1 					NO 			39 	 
+EcomVariantsOptions 	VariantOptionLanguageID 	-9 			nvarchar 	50 			100 	NULL	NULL	0	 		NULL	NULL		-9 				NULL				100 				2 					NO 			39 	 
+EcomVariantsOptions 	VariantOptionGroupID 		-9 			nvarchar 	255 		510 	NULL	NULL	1	 		NULL	NULL		-9 				NULL				510 				3 					YES 		39 	 
+EcomVariantsOptions 	VariantOptionName 			-9 			nvarchar 	255 		510 	NULL	NULL	1	 		NULL	NULL		-9 				NULL				510 				4 					YES 		39 	 
+EcomVariantsOptions 	VariantOptionImgSmall 		-9 			nvarchar 	255 		510 	NULL	NULL	1	 		NULL	NULL		-9 				NULL				510 				5 					YES 		39 	 
+EcomVariantsOptions 	VariantOptionImgMedium 		-9 			nvarchar 	255 		510 	NULL	NULL	1	 		NULL	NULL		-9 				NULL				510 				6 					YES 		39 	 
+EcomVariantsOptions 	VariantOptionImgLarge 		-9 			nvarchar 	255 		510 	NULL	NULL	1	 		NULL	NULL		-9 				NULL				510 				7 					YES 		39 	 
+EcomVariantsOptions 	VariantOptionSortOrder 		4 			int 		10 			4	 	0 		10	 	1	 		NULL	((0))	 	4 				NULL				NULL				8 					YES 		38 	 

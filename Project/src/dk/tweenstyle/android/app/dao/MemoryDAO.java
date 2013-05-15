@@ -1,6 +1,5 @@
 package dk.tweenstyle.android.app.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -11,14 +10,18 @@ import dk.tweenstyle.android.app.model.Discount;
 import dk.tweenstyle.android.app.model.Group;
 import dk.tweenstyle.android.app.model.Product;
 import dk.tweenstyle.android.app.model.Settings;
+import dk.tweenstyle.android.app.model.VariantGroup;
+import dk.tweenstyle.android.app.model.VariantOption;
 
 public class MemoryDAO {
 	
 	private static MemoryDAO instance = null;
 	
-	private ArrayList<Product> products = new ArrayList<Product>();
+	private List<Product> products = new LinkedList<Product>();
 	private Map<String, Group> groups = new HashMap<String, Group>();
-	private ArrayList<Discount> discounts = new ArrayList<Discount>();
+	private List<Discount> discounts = new LinkedList<Discount>();
+	private Map<String, VariantGroup> variantGroups = new HashMap<String, VariantGroup>();
+	private Map<String, VariantOption> variantOptions = new HashMap<String, VariantOption>();
 	private Settings settings = null;
 	
 	private MemoryDAO() {
@@ -84,18 +87,35 @@ public class MemoryDAO {
 		}
 	}
 	
+	public void hookupVariants() {
+		if (this.variantGroups != null && this.variantOptions != null) {
+			for (VariantGroup group : this.variantGroups.values()) {
+				if (group != null) {
+					for (VariantOption option : group) {
+						if (option != null) {
+							String id = option.getId();
+							if (id != null) {
+								this.variantOptions.put(id, option);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	public List<Product> getFlatProductList(Group g) {
-		if (g == null){
+		if (g == null) {
 			return new LinkedList<Product>();
 		}
 		HashSet<Group> processed = new HashSet<Group>();
 		LinkedList<Group> queue = new LinkedList<Group>();
 		List<Product> products = g.getProducts();
 		HashMap<String, Product> result = new HashMap<String, Product>();
-		if(products != null){
-			for(Product p : products){
+		if (products != null) {
+			for (Product p : products) {
 				String id = null;
-				if(p != null && (id = p.getId()) != null){
+				if (p != null && (id = p.getId()) != null) {
 					result.put(id, p);
 				}
 			}
@@ -104,19 +124,19 @@ public class MemoryDAO {
 		processed.add(g);
 		if (children != null) {
 			queue.addAll(children);
-			while(!queue.isEmpty()){
+			while (!queue.isEmpty()) {
 				g = queue.poll();
-				if(g != null && !processed.contains(g)){
+				if (g != null && !processed.contains(g)) {
 					products = g.getProducts();
-					if(products != null){
-						for(Product p : products){
+					if (products != null) {
+						for (Product p : products) {
 							String id = null;
-							if(p != null && (id = p.getId()) != null){
+							if (p != null && (id = p.getId()) != null) {
 								result.put(id, p);
 							}
 						}
 					}
-
+					
 					children = g.getChildren();
 					if (children != null) {
 						queue.addAll(children);
@@ -149,6 +169,10 @@ public class MemoryDAO {
 		return null;
 	}
 	
+	public List<Discount> getDiscounts() {
+		return discounts;
+	}
+	
 	public Discount addDiscount(Discount discount) {
 		discounts.add(discount);
 		return discount;
@@ -166,10 +190,6 @@ public class MemoryDAO {
 		this.settings = settings;
 	}
 	
-	public ArrayList<Discount> getDiscounts() {
-		return discounts;
-	}
-	
 	public Map<String, Group> getGroups() {
 		return groups;
 	}
@@ -178,8 +198,39 @@ public class MemoryDAO {
 		return this.groups.get(groupID);
 	}
 	
-	public ArrayList<Product> getProducts() {
+	public VariantOption getVariantOptionById(String voID) {
+		return this.variantOptions.get(voID);
+	}
+	
+	public VariantGroup getVariantGroupById(String vgID) {
+		return this.variantGroups.get(vgID);
+	}
+	
+	public List<Product> getProducts() {
 		return products;
+	}
+	
+	public Map<String, VariantGroup> getVariantGroups() {
+		return variantGroups;
+	}
+	
+	public VariantGroup addVariantGroup(VariantGroup variantGroup) {
+		String id = null;
+		if (variantGroup != null && ((id = variantGroup.getId()) != null)) {
+			variantGroups.put(id, variantGroup);
+		}
+		return variantGroup;
+	}
+	
+	public VariantGroup removeVariantGroup(VariantGroup variantGroup) {
+		VariantGroup result = null;
+		if (variantGroup != null) {
+			String id = variantGroup.getId();
+			if (id != null) {
+				result = variantGroups.remove(id);
+			}
+		}
+		return result;
 	}
 	
 }
