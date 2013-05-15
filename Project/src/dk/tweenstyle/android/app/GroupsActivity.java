@@ -176,6 +176,12 @@ public class GroupsActivity extends FragmentActivity implements
 								productDetailsWrapper
 										.setVisibility(ViewGroup.INVISIBLE);
 							}
+							ViewGroup productList = GUIUtil.getViewAs(
+									ViewGroup.class, GroupsActivity.this,
+									R.id.pnlProductList);
+							if (productList != null) {
+								productList.setVisibility(ViewGroup.VISIBLE);
+							}
 						}
 					});
 		}
@@ -250,6 +256,12 @@ public class GroupsActivity extends FragmentActivity implements
 							R.id.pnlProductDetailsWrapper);
 					if (productDetailsWrapper != null) {
 						productDetailsWrapper.setVisibility(ViewGroup.VISIBLE);
+					}
+					ViewGroup productList = GUIUtil.getViewAs(
+							ViewGroup.class, GroupsActivity.this,
+							R.id.pnlProductList);
+					if (productList != null) {
+						productList.setVisibility(ViewGroup.INVISIBLE);
 					}
 				}
 			}
