@@ -1,8 +1,9 @@
 package dk.tweenstyle.android.app.model;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
-public class Settings {
+public class Settings implements Iterable<String> {
 	public static final String SETTINGS_KEY_BOYS_GROUP_ID = "BoysGroupID", SETTINGS_KEY_GIRLS_GROUP_ID = "GirlsGroupID", SETTINGS_KEY_BRANDS_GROUP_ID = "BrandsGroupID";
 
 	private HashMap<String, String> settings;
@@ -29,6 +30,11 @@ public class Settings {
 
 	public void setStrings(HashMap<String, String> strings) {
 		this.settings = strings;
+	}
+
+	@Override
+	public Iterator<String> iterator() {
+		return this.settings.keySet().iterator();
 	}
 
 }
