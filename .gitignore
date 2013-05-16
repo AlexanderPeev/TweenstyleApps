@@ -10,8 +10,9 @@
 
 # generated files
 # bin/
-gen/
+# gen/
 /Project/bin
+/Project/gen
 
 # Local configuration file (sdk path, etc)
 local.properties
