@@ -84,13 +84,13 @@ public class ProductDetailsFragment extends Fragment {
 					lblProductManufacturer.setText("");
 				}
 				if(lblProductName != null){
-					lblProductName.setText("");
+					lblProductName.setText(R.string.placeholder_product_name);
 				}
 				if(lblProductNumber != null){
 					lblProductNumber.setText("");
 				}
 				if(lblProductOldPrice != null){
-					lblProductOldPrice.setText(basePrice + "");
+					lblProductOldPrice.setText("");
 					if(basePrice != currentPrice){
 						lblProductOldPrice.setVisibility(View.VISIBLE);
 					}
@@ -99,7 +99,7 @@ public class ProductDetailsFragment extends Fragment {
 					}
 				}
 				if(lblProductPrice != null){
-					lblProductPrice.setText(currentPrice + "");
+					lblProductPrice.setText("");
 				}
 			}
 		}

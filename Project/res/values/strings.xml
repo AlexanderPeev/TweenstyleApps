@@ -25,5 +25,7 @@
     <string name="message_fetching_data">Fetching product data&#8230; </string>
     <string name="message_loading_data">Loading retrieved product data&#8230; </string>
     <string name="message_hooking_up">Finalizing&#8230; </string>
+    
+    <string name="placeholder_product_name">No product is selected at the moment. </string>
 
 </resources>
