@@ -28,7 +28,10 @@ public class SettingsTest extends TestCase {
 	// @Test
 	public void test() {
 		String key = "testKey", value = "testValue";
+		Assert.assertFalse(this.s.containsKey(key));
 		this.s.put(key, value);
+		Assert.assertFalse(this.s.containsKey(null));
+		Assert.assertFalse(this.s.containsKey(""));
 		Assert.assertTrue(this.s.containsKey(key));
 		Assert.assertEquals(value, this.s.getValue(key));
 		int ran = 0;
